@@ -24,6 +24,17 @@ export class TrainingDay {
         return this.cyclingHours + this.swimmingHours + this.runningHours + this.otherHours;
     }
 
+    public duplicate(): TrainingDay {
+        const copy = new TrainingDay(this.dayOfWeek);
+        copy.cyclingHours = this.cyclingHours;
+        copy.runningHours = this.runningHours;
+        copy.swimmingHours = this.swimmingHours;
+        copy.otherHours = this.otherHours;
+        copy.maxTrainingHours = this.maxTrainingHours;
+
+        return copy;
+    }
+
     get name(): string {
         return [
             'Mon',

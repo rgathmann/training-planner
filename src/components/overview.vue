@@ -1,5 +1,6 @@
 <template>
     <section class="section">
+        <EditTrainingWeekModal></EditTrainingWeekModal>
         <div class="container">
             <h1 class="is-size-2 has-text-centered">Training Planner</h1>
             <div class="level">
@@ -13,8 +14,8 @@
                 </div>
             </div>
             <div class="training-weeks">
-                <template v-if="weeks.length > 0">
-                    <TrainingWeekSummary :week="week" :key="week.weekNumber" v-for="week in weeks"></TrainingWeekSummary>
+                <template v-if="$store.state.weeks.length > 0">
+                    <TrainingWeekSummary :week="week" :key="week.weekNumber" v-for="week in $store.state.weeks"></TrainingWeekSummary>
                 </template>
                 <template v-else>
                     <h2 class="is-size-5 has-text-centered">You have not added any training plans.</h2>
@@ -27,20 +28,16 @@
 <script lang="ts">
     import Vue from 'vue';
     import TrainingWeekSummary from '@/components/training-week-summary.vue';
-    import {TrainingWeek} from '@/models';
+    import EditTrainingWeekModal from '@/components/edit-training-week-modal.vue';
+    import {mapActions} from 'vuex';
 
     export default Vue.extend({
         name: 'Overview',
-        components: {TrainingWeekSummary},
-        data() {
-            return {
-                weeks: [] as TrainingWeek[],
-            };
-        },
+        components: {TrainingWeekSummary, EditTrainingWeekModal},
         methods: {
-          createWeek(): void {
-              this.weeks.push(new TrainingWeek(this.weeks.length + 1));
-          },
+          ...mapActions([
+              'createWeek',
+          ]),
         },
     });
 </script>

@@ -1,6 +1,9 @@
 <template>
     <div class="training-week">
-        <h3 class="week-header is-size-3">Week {{week.weekNumber}} - {{week.totalTrainingHours}} hrs</h3>
+        <h3 class="week-header is-size-3">
+            Week {{week.weekNumber}} - {{week.totalTrainingHours}} hrs
+            <span class="is-size-7" @click="editWeek(week.weekNumber)"><a>Edit</a></span>
+        </h3>
         <TrainingDayChart v-for="day in week.days" :day="day" :key="day.dayOfWeek"></TrainingDayChart>
     </div>
 </template>
@@ -17,6 +20,11 @@
             week: {
                 type: Object as PropType<TrainingWeek>,
                 required: true,
+            },
+        },
+        methods: {
+            editWeek(weekNumber: number) {
+                this.$store.dispatch('openWeekEditModal', weekNumber);
             },
         },
     });

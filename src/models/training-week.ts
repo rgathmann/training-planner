@@ -18,4 +18,11 @@ export class TrainingWeek {
             .map((day) => day.totalHours)
             .reduce((a, b) => a + b, 0);
     }
+
+    public duplicate(): TrainingWeek {
+        const copy = new TrainingWeek(this.weekNumber);
+        copy.days = this.days.map((day) => day.duplicate());
+
+        return copy;
+    }
 }
