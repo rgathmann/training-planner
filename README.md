@@ -1,4 +1,10 @@
-# training-planner
+# FinFest 2019 - Training Planner
+
+The training planner was designed to be a working example to show of some the great features of VueJs in  a non-trivial 
+application. Give it a try for you self and let me know if you have any questions.
+
+You can find a working demo at https://rwg.io/training-planner
+
 
 ## Project setup
 ```
@@ -14,16 +20,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
